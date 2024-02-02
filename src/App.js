@@ -16,7 +16,7 @@ function App() {
 
     const words = text.split(" ");
     const correctedWords = words.map((word) => {
-      const correctedWord = customDictionary(word.toLowerCase());
+      const correctedWord = customDictionary[word.toLowerCase()];
       return correctedWord || word;
     });
     const correctedText = correctedWords.join(" ");
