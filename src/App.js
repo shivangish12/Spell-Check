@@ -30,7 +30,7 @@ function App() {
       <h1>Spell Check and Auto-Correction</h1>
       <textarea
         value={text}
-        onCHange={handleInputChange}
+        onChange={handleInputChange}
         placeholder="Enter text..."
         rows={5}
         cols={40}
