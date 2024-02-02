@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+
 const customDictionary = {
   teh: "the",
   wrok: "work",
@@ -10,21 +11,24 @@ const customDictionary = {
 function App() {
   const [text, setText] = useState("");
   const [suggestedText, setSuggestedText] = useState("");
-  const handleInputChange = (e) => {
-    const text = e.target.value;
-    setText(text);
 
-    const words = text.split(" ");
+  const handleInputChange = (e) => {
+    const inputText = e.target.value;
+    setText(inputText);
+
+    const words = inputText.split(" ");
     const correctedWords = words.map((word) => {
       const correctedWord = customDictionary[word.toLowerCase()];
       return correctedWord || word;
     });
-    const correctedText = correctedWords.join(" ");
+
     const firstCorrection = correctedWords.find(
-      (word, index) => word !== word[index]
+      (word, index) => word.toLowerCase() !== words[index].toLowerCase()
     );
+
     setSuggestedText(firstCorrection || "");
   };
+
   return (
     <div>
       <h1>Spell Check and Auto-Correction</h1>
